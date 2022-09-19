@@ -8,8 +8,11 @@ if (!$pdo) {
     echo("Connessione riuscita.\n<br><br>");
 }
 
-$query = $pdo->query('select nickname from users ');
+$query = $pdo->query('select nickname from users');
 
-$row = $query->fetch();
+$count=1;
 
-echo 'Mio nickname: ' . $row['nickname'];
+while($row = $query->fetch()){
+    echo ($count.'° nickname: ' . $row['nickname'] . '<br>');   
+    ++$count;
+}
