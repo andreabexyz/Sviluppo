@@ -15,9 +15,10 @@ $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::A
 </head>
 <body>
 <ul>
-  <li><a href="index.php">Home</a></li>
-  <li><a href="list-users.php">Lista utenti</a></li>
+  <li id="logo">BESSO Web Develop Space</li>
   <li><a href="edit-user.php">Inserisci utenti</a></li>
+  <li><a href="list-users.php">Lista utenti</a></li>
+  <li><a href="index.php">Home</a></li>
 </ul>
 <br>
 <h1>Inserisci utenti</h1>
@@ -26,7 +27,7 @@ $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::A
         <input type="text" id="name" name="name" placeholder="Nome">*</input>
         <input type="text" id="surname" name="surname" placeholder="Cognome">*</input>
         <input type="text" id="nickName" name="nickName" placeholder="Nickname">*</input>
-        <input type="submit" id="submit" value="Inserisci"></input>
+        <input class="button" type="submit" id="submit" value="Inserisci"></input>
         <?php
         // Recupero i valori inseriti nel form
         if(isset($_POST['name'])){

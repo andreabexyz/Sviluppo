@@ -18,21 +18,35 @@ $nickName="";
 </head>
 <body>
 <ul>
-  <li><a href="index.php">Home</a></li>
-  <li><a href="list-users.php">Lista utenti</a></li>
+  <li id="logo">BESSO Web Develop Space</li>
   <li><a href="edit-user.php">Inserisci utenti</a></li>
+  <li><a href="list-users.php">Lista utenti</a></li>
+  <li><a href="index.php">Home</a></li>
 </ul>
 <br>
 <h1>Elenco utenti</h1>
 <div>
-<?php
-// Leggo da db
-    $query = $pdo->query('Select * FROM users');
-    
-    while($row = $query->fetch()){
-        echo (''. $row['idUser'].'° Nominativo: '. $row['name'].' '. $row['surname'].'<br>');   
-    }
-?>
+    <table>
+        <tr>
+            <th>Numero</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+        </tr>
+            <?php
+            // Leggo da db
+                $query = $pdo->query('Select * FROM users');
+                
+                while($row = $query->fetch()){
+            ?>
+            <tr>
+                <td><?php echo $row['idUser']; ?></td>
+                <td><?php echo $row['name']; ?></td>
+                <td><?php echo $row['surname']; ?></td>
+            </tr>
+            <?php 
+                }
+            ?>
+    </table>
 </div>
 </body>
 <script>

@@ -15,12 +15,14 @@ $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::A
 </head>
 <body>
 <ul>
-  <li><a href="index.php">Home</a></li>
-  <li><a href="list-users.php">Lista utenti</a></li>
+  <li id="logo">BESSO Web Develop Space</li>
   <li><a href="edit-user.php">Inserisci utenti</a></li>
+  <li><a href="list-users.php">Lista utenti</a></li>
+  <li><a href="index.php">Home</a></li>
 </ul>
 <br>
 <h1>Benvenuto sul mio sito!</h1>
+<img src="img/fotoProfilo.JPG" width="300" height="300">
 </body>
 <script>
 </script>
