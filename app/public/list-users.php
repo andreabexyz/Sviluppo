@@ -24,14 +24,16 @@ $nickName="";
 </ul>
 <br>
 <h1>Elenco utenti</h1>
+<div>
 <?php
 // Leggo da db
-    $query = $pdo->query('Select idUser, nickname FROM users');
+    $query = $pdo->query('Select * FROM users');
     
     while($row = $query->fetch()){
-        echo (''. $row['idUser'].'° nickname: '. $row['nickname'].'<br>');   
+        echo (''. $row['idUser'].'° Nominativo: '. $row['name'].' '. $row['surname'].'<br>');   
     }
 ?>
+</div>
 </body>
 <script>
 </script>

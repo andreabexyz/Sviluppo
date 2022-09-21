@@ -21,7 +21,8 @@ $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::A
 </ul>
 <br>
 <h1>Inserisci utenti</h1>
-    <form method="post" action="index.php">
+<div>
+    <form method="post" action="edit-user.php">
         <input type="text" id="name" name="name" placeholder="Nome">*</input>
         <input type="text" id="surname" name="surname" placeholder="Cognome">*</input>
         <input type="text" id="nickName" name="nickName" placeholder="Nickname">*</input>
@@ -46,7 +47,10 @@ $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::A
         }
         ?>
     </form>
+</div>
 </body>
+<footer>
+</footer>
 <script>
 </script>
 </html>
