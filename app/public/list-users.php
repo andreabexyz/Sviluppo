@@ -13,41 +13,40 @@ $nickName="";
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sviluppo</title>
-<link rel="stylesheet" href="style\style.css">
+<?php include('classes/head.php'); ?>
 </head>
 <body>
-<ul>
-  <li id="logo">BESSO Web Develop Space</li>
-  <li><a href="edit-user.php">Inserisci utenti</a></li>
-  <li><a href="list-users.php">Lista utenti</a></li>
-  <li><a href="index.php">Home</a></li>
-</ul>
-<br>
-<h1>Elenco utenti</h1>
-<div>
-    <table>
-        <tr>
-            <th>Numero</th>
-            <th>Nome</th>
-            <th>Cognome</th>
-        </tr>
-            <?php
-            // Leggo da db
-                $query = $pdo->query('Select * FROM users');
-                
-                while($row = $query->fetch()){
-            ?>
+<?php include('classes/navbar.php'); ?>
+    <br>
+    <h1>Elenco utenti</h1>
+    <div>
+        <table>
+            <form  method="delete" action=" " onSubmit="window.location.reload()">
             <tr>
-                <td><?php echo $row['idUser']; ?></td>
-                <td><?php echo $row['name']; ?></td>
-                <td><?php echo $row['surname']; ?></td>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Modifica/Elimina</th>
             </tr>
-            <?php 
-                }
-            ?>
-    </table>
-</div>
+                <?php
+                // Leggo da db
+                    $query = $pdo->query('Select * FROM users');
+                    while($row = $query->fetch()){
+                ?>
+                <tr>
+                    <td><?php echo $row['name']; ?></td>
+                    <td><?php echo $row['surname']; ?></td>
+                    <td>
+                        <a type="submit" class="btn btn-success" id="UPD" value="<?php echo $row['idUser']; ?>"><i class="bi bi-pencil-fill"></i></a>
+                        <a type="submit" name="delete_button"  onSubmit="return confirm(\'Vuoi davvero eliminare l'utente '<?php echo $row['idUser']; ?>'?\');" type="submit" class="btn btn-danger" id="DEL" value="<?php echo $row['idUser']; ?>"><i class="bi bi-trash"></i></a>
+
+                    </td>
+                </tr>
+                <?php 
+                    }
+                ?>
+            </form>
+        </table>
+    </div>
 </body>
 <script>
 </script>

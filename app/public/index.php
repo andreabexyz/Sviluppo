@@ -10,19 +10,13 @@ $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::A
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sviluppo</title>
-<link rel="stylesheet" href="style\style.css">
+<?php include('classes/head.php'); ?>
 </head>
 <body>
-<ul>
-  <li id="logo">BESSO Web Develop Space</li>
-  <li><a href="edit-user.php">Inserisci utenti</a></li>
-  <li><a href="list-users.php">Lista utenti</a></li>
-  <li><a href="index.php">Home</a></li>
-</ul>
+<?php include('classes/navbar.php'); ?>
 <br>
 <h1>Benvenuto sul mio sito!</h1>
-<img src="img/fotoProfilo.JPG" width="300" height="300">
+<img src="img/fotoProfilo.JPG" width="150" height="150">
 </body>
 <script>
 </script>
