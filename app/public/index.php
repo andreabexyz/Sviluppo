@@ -13,7 +13,6 @@ $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::A
 <?php include('classes/head.php'); ?>
 </head>
 <body>
-<?php include('classes/navbar.php'); ?>
 <br>
 <h1>Benvenuto sul mio sito!</h1>
 <img src="img/fotoProfilo.JPG" width="150" height="150">

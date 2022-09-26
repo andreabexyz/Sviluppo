@@ -1,7 +1,7 @@
 <?php
 $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-if(isset($_REQUEST['idUser'])){
-    $idUser=$_REQUEST['idUser'];
+if(isset($_REQUEST['del'])){
+    $idUser=$_REQUEST['del'];
     $query = $pdo->query("Delete from users WHERE idUser = ".$idUser."");
     header("Location: list-users.php ");
 }
@@ -21,7 +21,6 @@ $nickName="";
 <?php include('classes/head.php'); ?>
 </head>
 <body>
-<?php include('classes/navbar.php'); ?>
     <br>
     <h1>Elenco utenti</h1>
     <div>
@@ -30,6 +29,7 @@ $nickName="";
             <tr>
                 <th>Nome</th>
                 <th>Cognome</th>
+                <th>Modifica</th>
                 <th>Elimina</th>
             </tr>
                 <?php
@@ -45,7 +45,10 @@ $nickName="";
                     <?php echo $row['surname'];?>
                 </td>
                 <td>
-                    <button type="submit" class="btn btn-danger" value="<?php echo $row['idUser'];?>" id="idUser" name="idUser"><i class="bi bi-trash"></i></button>
+                    <button type="submit" class="btn btn-success" value="<?php echo $row['idUser'];?>" id="add" name="add"><i class="bi bi-pen"></i></button>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-danger" value="<?php echo $row['idUser'];?>" id="del" name="del"><i class="bi bi-trash"></i></button>
                 </td>
             </tr>
                 <?php 

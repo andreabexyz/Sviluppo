@@ -7,7 +7,6 @@ $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::A
 <?php include('classes/head.php'); ?>
 </head>
 <body>
-<?php include('classes/navbar.php'); ?>
     <br>
     <h1>Inserisci utenti</h1>
     <div>
@@ -24,7 +23,7 @@ $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::A
                 $cognome = $_POST['surname'];
             }
 
-            if(!isset($nome) || !isset($cognome)){
+            if(!isset($nome) || !isset($cognome) || ($nome == "")|| ($cognome == "") ){
                 echo '<br>Tutti i campi * sono obbligatori!';    
             }else{
                 $query2 = $pdo->query('Insert into users (name, surname) values("'.$nome.'","'.$cognome.'")');
