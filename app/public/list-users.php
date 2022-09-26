@@ -1,5 +1,10 @@
 <?php
 $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+if(isset($_REQUEST['idUser'])){
+    $idUser=$_REQUEST['idUser'];
+    $query = $pdo->query("Delete from users WHERE idUser = ".$idUser."");
+    header("Location: list-users.php ");
+}
 // Controllo connessione db
 /*if (!$pdo) {
     echo("Connessione fallita.\n<br><br>");
@@ -21,26 +26,28 @@ $nickName="";
     <h1>Elenco utenti</h1>
     <div>
         <table>
-            <form  method="delete" action=" " onSubmit="window.location.reload()">
+            <form action="list-users.php" method="post">
             <tr>
                 <th>Nome</th>
                 <th>Cognome</th>
-                <th>Modifica/Elimina</th>
+                <th>Elimina</th>
             </tr>
                 <?php
                 // Leggo da db
                     $query = $pdo->query('Select * FROM users');
                     while($row = $query->fetch()){
                 ?>
-                <tr>
-                    <td><?php echo $row['name']; ?></td>
-                    <td><?php echo $row['surname']; ?></td>
-                    <td>
-                        <a type="submit" class="btn btn-success" id="UPD" value="<?php echo $row['idUser']; ?>"><i class="bi bi-pencil-fill"></i></a>
-                        <a type="submit" name="delete_button"  onSubmit="return confirm(\'Vuoi davvero eliminare l'utente '<?php echo $row['idUser']; ?>'?\');" type="submit" class="btn btn-danger" id="DEL" value="<?php echo $row['idUser']; ?>"><i class="bi bi-trash"></i></a>
-
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    <?php echo $row['name'];?>
+                </td>
+                <td>
+                    <?php echo $row['surname'];?>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-danger" value="<?php echo $row['idUser'];?>" id="idUser" name="idUser"><i class="bi bi-trash"></i></button>
+                </td>
+            </tr>
                 <?php 
                     }
                 ?>
@@ -48,6 +55,5 @@ $nickName="";
         </table>
     </div>
 </body>
-<script>
-</script>
+<script></script>
 </html>
