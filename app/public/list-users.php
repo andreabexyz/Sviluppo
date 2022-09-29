@@ -4,16 +4,7 @@ if(isset($_REQUEST['del'])){
     $idUser=$_REQUEST['del'];
     $query = $pdo->query("Delete from users WHERE idUser = ".$idUser."");
     header("Location: list-users.php ");
-}
-// Controllo connessione db
-/*if (!$pdo) {
-    echo("Connessione fallita.\n<br><br>");
-}else{
-    echo("Connessione riuscita.\n<br><br>");
-}*/
-$name="";
-$surname="";
-$nickName="";
+} 
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,15 +12,39 @@ $nickName="";
 <?php include('classes/head.php'); ?>
 </head>
 <body>
+    <div>
+        <h1>Elenco utenti</h1>
+    </div>
+    <div>
+        <form method="post" action="list-users.php">
+            <input type="text" id="name" name="name" placeholder="Nome"></input>
+            <input type="text" id="surname" name="surname" placeholder="Cognome"></input>
+            <input class="button" type="submit" id="submit" value="Inserisci"></input>
+            <?php
+            // Recupero i valori inseriti nel form
+            if(isset($_POST['name'])){
+                $nome = $_POST['name'];
+            }
+            if(isset($_POST['surname'])){
+                $cognome = $_POST['surname'];
+            }
+            if(!isset($_POST['name']) || !isset($_POST['surname']) || ($nome == "")|| ($cognome == "") ){
+            }else{
+                $query2 = $pdo->query('Insert into users (name, surname) values("'.$nome.'","'.$cognome.'")');
+                $msg="'<br>Nuovo utente inserito correttamente!";
+                echo $msg;
+            }
+            ?>
+        </form>
+    </div>
     <br>
-    <h1>Elenco utenti</h1>
     <div>
         <table>
             <form action="list-users.php" method="post">
             <tr>
                 <th>Nome</th>
                 <th>Cognome</th>
-                <th>Modifica</th>
+                <!--<th>Modifica</th>-->
                 <th>Elimina</th>
             </tr>
                 <?php
@@ -44,9 +59,9 @@ $nickName="";
                 <td>
                     <?php echo $row['surname'];?>
                 </td>
-                <td>
-                    <button type="submit" class="btn btn-success" value="<?php echo $row['idUser'];?>" id="add" name="add"><i class="bi bi-pen"></i></button>
-                </td>
+                <!--<td>
+                    <button type="submit" class="btn btn-success" value="<?php echo $row['idUser'];?>" id="add" name="add"><i class="bi bi-pencil-square"></i></button>
+                </td>-->
                 <td>
                     <button type="submit" class="btn btn-danger" value="<?php echo $row['idUser'];?>" id="del" name="del"><i class="bi bi-trash"></i></button>
                 </td>

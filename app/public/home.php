@@ -15,7 +15,8 @@ $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::A
 <body>
 <br>
 <h1>Benvenuto sul mio sito!</h1>
-<img src="img/fotoProfilo.JPG" width="150" height="150">
+<br>
+<img class="imgHome" src="img/fotoHomePage.JPG">
 </body>
 <script>
 </script>
