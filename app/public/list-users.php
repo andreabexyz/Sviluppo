@@ -19,7 +19,7 @@ if(isset($_REQUEST['del'])){
         <form method="post" action="list-users.php">
             <input type="text" id="name" name="name" placeholder="Nome"></input>
             <input type="text" id="surname" name="surname" placeholder="Cognome"></input>
-            <input class="button" type="submit" id="submit" value="Inserisci"></input>
+            <button class="button" type="submit" id="submit"><i class="bi bi-person-plus-fill"></i> Inserisci</button>
             <?php
             // Recupero i valori inseriti nel form
             if(isset($_POST['name'])){
