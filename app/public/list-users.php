@@ -1,4 +1,5 @@
 <?php
+$namePage="Lista utenti";
 $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 if(isset($_REQUEST['del'])){
     $idUser=$_REQUEST['del'];
@@ -13,7 +14,7 @@ if(isset($_REQUEST['del'])){
 </head>
 <body>
     <div>
-        <h1>Elenco utenti</h1>
+        <h1><?php echo $namePage; ?></h1>
     </div>
     <div>
         <form method="post" action="list-users.php">

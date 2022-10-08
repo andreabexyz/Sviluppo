@@ -1,16 +1,7 @@
 <?php
-    $idUser=$_GET['idUser'];
-    try {
-        $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-
-        // sql to delete a record
-        $query = $pdo->query("Delete from users  WHERE idUser = ".$idUser."");
-
-        }
-    catch(PDOException $e)
-        {
-        echo $e->getMessage();
-        }
-
-    $conn = null;
+    if(isset($_REQUEST['del'])){
+        $idUser=$_REQUEST['del'];
+        $query = $pdo->query("Delete from users WHERE idUser = ".$idUser."");
+        header("Location: users.php ");
+    }
     ?>    

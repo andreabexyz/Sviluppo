@@ -1,11 +1,6 @@
 <?php
-$pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-// Controllo connessione db
-/*if (!$pdo) {
-    echo("Connessione fallita.\n<br><br>");
-}else{
-    echo("Connessione riuscita.\n<br><br>");
-}*/
+$namePage="Benvenuto!";
+include('classes/connOpen.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +9,7 @@ $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::A
 </head>
 <body>
 <br>
-<h1>Benvenuto sul mio sito!</h1>
+<h1><?php echo $namePage; ?></h1>
 <br>
 <img class="imgHome" src="img/fotoHomePage.JPG">
 </body>
